@@ -4,6 +4,7 @@ import (
 	"bytes"
 	_ "embed"
 	"github.com/hajimehoshi/ebiten/v2"
+	"golang.org/x/image/font/opentype"
 	"image"
 	_ "image/png"
 )
@@ -28,6 +29,14 @@ var FImage *ebiten.Image
 var plusOneImageFile []byte
 var PlusOneImage *ebiten.Image
 
+//go:embed images/background.png
+var backgroundImageFile []byte
+var BackgroundImage *ebiten.Image
+
+//go:embed fonts/galmuri9.ttf
+var galmuriFontFile []byte
+var GalmuriFont *opentype.Font
+
 func getImage(source []byte) *ebiten.Image {
 	i, _, err := image.Decode(bytes.NewReader(source))
 	if err != nil {
@@ -37,10 +46,22 @@ func getImage(source []byte) *ebiten.Image {
 	return ebiten.NewImageFromImage(i)
 }
 
+func getFont(source []byte) *opentype.Font {
+	f, err := opentype.Parse(source)
+	if err != nil {
+		panic(err)
+	}
+
+	return f
+}
+
 func init() {
 	GomduriImage = getImage(gomduriImageFile)
 	APlusImage = getImage(aPlusImageFile)
 	CatImage = getImage(catImageFile)
 	FImage = getImage(fImageFile)
 	PlusOneImage = getImage(plusOneImageFile)
+	BackgroundImage = getImage(backgroundImageFile)
+
+	GalmuriFont = getFont(galmuriFontFile)
 }

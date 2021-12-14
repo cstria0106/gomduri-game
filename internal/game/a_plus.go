@@ -26,6 +26,7 @@ func (p *APlus) Update(gameInterface interface{}) (bool, error) {
 		return true, err
 	} else if earned {
 		game.engine.Add(NewPlusOne(p.x, p.y))
+		game.score.Add(1)
 		return true, nil
 	}
 

@@ -5,19 +5,19 @@ import (
 	"math"
 )
 
-type SpawnItemSystem struct {
+type Spawner struct {
 	engine.BaseObject
 
 	frame int
 }
 
-func NewSpawnItemSystem() *SpawnItemSystem {
-	return &SpawnItemSystem{
+func NewSpawner() *Spawner {
+	return &Spawner{
 		frame: 0,
 	}
 }
 
-func (s *SpawnItemSystem) Update(gameInterface interface{}) (bool, error) {
+func (s *Spawner) Update(gameInterface interface{}) (bool, error) {
 	game := gameInterface.(*Game)
 
 	s.frame += 1
@@ -29,6 +29,6 @@ func (s *SpawnItemSystem) Update(gameInterface interface{}) (bool, error) {
 	return false, nil
 }
 
-func (s *SpawnItemSystem) Priority() int {
+func (s *Spawner) Priority() int {
 	return math.MaxInt
 }

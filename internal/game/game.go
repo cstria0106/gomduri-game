@@ -14,7 +14,9 @@ type Game struct {
 
 	input   *Input
 	gomduri *Gomduri
-	items   []engine.Object
+	score   *Score
+
+	items []engine.Object
 }
 
 func NewGame() *Game {
@@ -26,11 +28,14 @@ func NewGame() *Game {
 	}
 
 	game.gomduri = NewGomduri(asset.GomduriImage)
+	game.score = NewScore()
 
 	game.engine.Add(
 		game.input,
 		game.gomduri,
-		NewSpawnItemSystem(),
+		game.score,
+		NewSpawner(),
+		NewBackground(),
 	)
 
 	return game

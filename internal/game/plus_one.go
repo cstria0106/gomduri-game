@@ -9,18 +9,24 @@ import (
 type PlusOne struct {
 	engine.BaseObject
 
-	x, y  float64
-	frame int
+	x, y, initialY float64
+	speedY         float64
+	frame          int
 }
 
 func NewPlusOne(x, y float64) *PlusOne {
-	return &PlusOne{x: x, y: y}
+	return &PlusOne{x: x, y: y, initialY: y, speedY: -2}
 }
 
 func (p *PlusOne) Update(_ interface{}) (shouldRemove bool, err error) {
-	p.y -= 1
-	p.frame += 1
+	p.speedY += 0.2
+	p.y += p.speedY
 
+	if p.y > p.initialY {
+		p.y = p.initialY
+	}
+
+	p.frame += 1
 	return p.frame == 60, nil
 }
 
@@ -31,5 +37,5 @@ func (p *PlusOne) DrawOn(image *ebiten.Image) {
 }
 
 func (p *PlusOne) Layer() int {
-	return 5
+	return -2
 }
