@@ -8,24 +8,43 @@
     <title>곰두리 게임</title>
 
     <style>
+        @font-face {
+            font-family: 'Galmuri';
+            src: url("./galmuri9.ttf")
+        }
+
+        html, body {
+            padding: 0;
+            margin: 0;
+        }
+
         .wrapper {
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             height: 100vh;
         }
 
+        .title {
+            font-family: 'Galmuri',serif;
+            font-size: 30px;
+        }
+
         .game {
-            border: 0;
-            background-color: #ddd;
+            border: 5px dotted #ddd;
             width: calc(320px * 3);
             height: calc(240px * 3);
+            margin-bottom: 60px;
         }
     </style>
 </head>
 
 <body>
 <div class="wrapper">
+    <h1 class="title">
+        🌸 곰두리 게임 🌸
+    </h1>
     <iframe src="game.html" class="game" allow="autoplay"></iframe>
 </div>
 </body>
