@@ -1,7 +1,18 @@
-<!DOCTYPE html>
+<!doctype html>
+<html lang="ko">
+<head>
+    <style>
+        html, body {
+            padding: 0;
+            margin: 0;
+            overflow: hidden;
+        }
+    </style>
+    <title>Game</title>
+</head>
+<body>
 <script src="wasm_exec.js"></script>
 <script>
-
     // Polyfill
     if (!WebAssembly.instantiateStreaming) {
         WebAssembly.instantiateStreaming = async (resp, importObject) => {
@@ -15,3 +26,5 @@
         go.run(result.instance);
     });
 </script>
+</body>
+</html>
