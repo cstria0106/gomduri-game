@@ -6,10 +6,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>곰두리 게임</title>
+
+    <style>
+        .wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .game {
+            border: 0;
+            background-color: #ddd;
+            width: calc(320px * 3);
+            height: calc(240px * 3);
+        }
+    </style>
 </head>
 
 <body>
-    <iframe src="game.html" frameborder="0" allow="autoplay"></iframe>
+<div class="wrapper">
+    <iframe src="game.html" class="game" allow="autoplay"></iframe>
+</div>
 </body>
 
 </html>
