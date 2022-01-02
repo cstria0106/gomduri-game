@@ -23,19 +23,35 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
+            min-height: 100vh;
         }
 
         .title {
-            font-family: 'Galmuri',serif;
+            font-family: 'Galmuri', serif;
             font-size: 30px;
         }
 
-        .game {
+        .game-wrapper {
+            position: relative;
             border: 5px dotted #ddd;
-            width: calc(320px * 3);
-            height: calc(240px * 3);
+            width: calc(100vw - 40px);
+            overflow: hidden;
             margin-bottom: 60px;
+            aspect-ratio: 320 / 240;
+        }
+        
+        @media (min-width: 768px) {
+            .game-wrapper {
+                width: 728px;
+            }
+        }
+
+        .game {
+            position: absolute;
+            width: calc(100% + 4px);
+            height: calc(100% + 4px);
+            left: -4px;
+            top: -4px;
         }
     </style>
 </head>
@@ -45,7 +61,9 @@
     <h1 class="title">
         🌸 곰두리 게임 🌸
     </h1>
-    <iframe src="game.html" class="game" allow="autoplay"></iframe>
+    <div class="game-wrapper">
+        <iframe src="game.html" class="game" allow="autoplay"></iframe>
+    </div>
 </div>
 </body>
 
